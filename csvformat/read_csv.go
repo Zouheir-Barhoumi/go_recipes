@@ -43,7 +43,11 @@ func ReadCSV(b io.Reader) ([]Movie, error) {
 			return nil, err
 		}
 
-		m := Movie{record[0], record[1], int(year)}
+		m := Movie{
+			Title:    record[0],
+			Director: record[1],
+			Year:     year,
+		}
 		movies = append(movies, m)
 	}
 
