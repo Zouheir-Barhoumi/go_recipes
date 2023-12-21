@@ -7,28 +7,29 @@ import (
 )
 
 const sampleTemplate = `
-This template demonstrates printing a {{ .Variable | printf "%v"}}.
-{{if .Condition}}
-If condition is set, we'll print this
-{{else}}
-Otherwise, we'll print this instead
-{{end}}
-Next we'll iterate over an array of strings: 
-{{range $index, $item := .Item}}
-{{$index}}: {{$item}}
-{{end}}
-
-We can also easily import other functions like strings.Split
-then immediately used the array created as a result:
-{{range $index, $item :=  strings.Split.Item ", "}}
-{{$index}}: {{$item}}
-{{end}}
-Blocks are a way to embed templates into one another
-{{ block "block_example" .}}
-No Block defined!
-{{end}}
-{{/*
-	This is a way 
+This template demonstrates printing a {{ .Variable |
+	printf "%#v" }}.
+	{{if .Condition}}
+	If condition is set, we'll print this
+	{{else}}
+	Otherwise, we'll print this instead
+	{{end}}
+	Next we'll iterate over an array of strings:
+	{{range $index, $item := .Items}}
+	{{$index}}: {{$item}}
+	{{end}}
+	We can also easily import other functions like
+	strings.Split
+	then immediately used the array created as a result:
+	{{ range $index, $item := split .Words ","}}
+	{{$index}}: {{$item}}
+	{{end}}
+	Blocks are a way to embed templates into one another
+	{{ block "block_example" .}}
+	No Block defined!
+	{{end}}
+	{{/*
+	This is a way
 	to insert a multi-line comment
 */}}
 `
